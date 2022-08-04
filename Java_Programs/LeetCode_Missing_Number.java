@@ -1,35 +1,33 @@
 
 // 268. Missing Number : https://leetcode.com/problems/missing-number/
-import java.util.Arrays;
-
 public class LeetCode_Missing_Number {
     static int missingNumber(int[] nums) {
-        int start = Integer.MAX_VALUE;
-        int end = Integer.MIN_VALUE;
-        for (int num : nums) {
-            if (start > num)
-                start = num;
-            if (end < num)
-                end = num;
+        int i = 0;
+        while (i < nums.length) {
+            if (nums[i] < nums.length && nums[i] != nums[nums[i]])
+                swap(nums, i, nums[i]);
+            else
+                i++;
         }
-        int[] arr = new int[nums.length];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = i;
-        }
-        Arrays.sort(nums);
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == arr[i]) {
-            } else {
-                return i;
+
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] != j) {
+                return j;
             }
         }
-        return nums.length;
 
+        return nums.length;
+    }
+
+    static void swap(int[] arr, int start, int end) {
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
     }
 
     public static void main(String[] args) {
-        int[] arr = { 9, 6, 4, 2, 3, 5, 8, 0, 1 };
-        // int[] arr = { 3, 0, 1 };
+        // int[] arr = { 0, 1 };
+        int[] arr = { 3, 0, 1 };
         // int[] arr = { 0, 1 };
         int ans = missingNumber(arr);
         System.out.println(ans);
