@@ -1,33 +1,57 @@
 
 // 41. First Missing Positive : https://leetcode.com/problems/first-missing-positive/
-import java.util.*;
+// import java.util.*;
 
 public class LeetCode_First_Missing_Positive {
 
     static int firstMissingPositive(int[] nums) {
-        int s = 0;
-        for (int num : nums) {
-            if (num == 1)
-                s++;
-        }
-        if (s == 0)
-            return 1;
-        HashMap<Integer, Integer> maps = new HashMap<>();
-        for (int num : nums) {
-            if (maps.containsKey(num)) {
-                maps.put(num, 1 + maps.get(num));
+        // Method -01
+        // int s = 0;
+        // for (int num : nums) {
+        // if (num == 1)
+        // s++;
+        // }
+        // if (s == 0)
+        // return 1;
+        // HashMap<Integer, Integer> maps = new HashMap<>();
+        // for (int num : nums) {
+        // if (maps.containsKey(num)) {
+        // maps.put(num, 1 + maps.get(num));
+        // } else {
+        // maps.put(num, 1);
+        // }
+        // }
+        // for (int i = 1; i <= maps.size() + 1; i++) {
+
+        // if (maps.containsKey(i)) {
+        // } else {
+        // return i;
+        // }
+        // }
+        // return nums.length + 1;\
+
+        // Method -02
+        int i = 0;
+        while (i < nums.length) {
+            int correct = nums[i] - 1;
+            if (nums[i] > 0 && nums[i] <= nums.length && nums[i] != nums[correct]) {
+                swap(nums, i, correct);
             } else {
-                maps.put(num, 1);
+                i++;
             }
         }
-        for (int i = 1; i <= maps.size() + 1; i++) {
-
-            if (maps.containsKey(i)) {
-            } else {
-                return i;
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] != (j + 1)) {
+                return j + 1;
             }
         }
         return nums.length + 1;
+    }
+
+    static void swap(int[] arr, int first, int second) {
+        int temp = arr[first];
+        arr[first] = arr[second];
+        arr[second] = temp;
     }
 
     public static void main(String[] args) {
