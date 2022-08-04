@@ -8,15 +8,18 @@ public class LeetCode_Finding_3_Digit_Even_Numbers {
         Arrays.sort(digits);
         int p = 0;
         for (int i = 0; i < digits.length; i++) {
-            for (int j = 0; j < digits.length; j++) {
-                for (int k = 0; k < digits.length; k++) {
-                    if (i != j && j != k && k != i) {
-                        String num = String.valueOf(digits[i]) + String.valueOf(digits[j]) +
-                                String.valueOf(digits[k]);
-                        if (Integer.parseInt(num) % 2 == 0 && num.length() == 3 && digits[i] != 0) {
-                            // System.out.println(digits[i] + " | " + digits[j] + " | " + digits[k]);
-                            maps.put(Integer.parseInt(num), 1);
-                            p++;
+            if (digits[i] != 0) {
+                for (int j = 0; j < digits.length; j++) {
+                    if (i != j) {
+                        for (int k = 0; k < digits.length; k++) {
+                            if (i != j && j != k && k != i) {
+                                String num = String.valueOf(digits[i]) + String.valueOf(digits[j]) +
+                                        String.valueOf(digits[k]);
+                                if (Integer.parseInt(num) % 2 == 0 && num.length() == 3 && digits[i] != 0) {
+                                    maps.put(Integer.parseInt(num), 1);
+                                    p++;
+                                }
+                            }
                         }
                     }
                 }
@@ -36,7 +39,7 @@ public class LeetCode_Finding_3_Digit_Even_Numbers {
     }
 
     public static void main(String[] args) {
-        int[] arr = { 2, 2, 8, 8, 2 };
+        // int[] arr = { 2, 2, 8, 8, 2 };
         // int[] arr = { 2, 1, 3, 0 };
         // int[] arr = { 3, 7, 5 };
         // int[] arr = { 0, 5, 8, 6, 1, 5, 1, 2, 6, 7, 6, 5, 4, 3, 4, 4, 2, 7, 4, 2, 0,
@@ -44,11 +47,16 @@ public class LeetCode_Finding_3_Digit_Even_Numbers {
         // 4, 0, 6, 2, 3, 1, 9, 7, 1, 5, 5, 8, 1, 1, 6, 7, 6, 9, 1, 1, 9, 3, 9, 7, 3, 2,
         // 2, 5, 0, 8, 4, 0, 5, 8, 4,
         // 4, 9, 2, 4, 2, 4, 8, 7, 3, 7, 0, 1, 3, 4, 8, 6, 6, 9, 3, 5, 3, 6, 6, 6, 8, 6,
-        // 0, 9, 8, 2, 6, 8 }; //Not Submitted due to this input
+        // 0, 9, 8, 2, 6, 8 };
+        int[] arr = { 6, 2, 5, 4, 9, 7, 7, 6, 2, 9, 1, 4, 4, 5, 4, 2, 9, 5, 9, 8, 3, 4, 0, 0, 3, 7, 6, 0, 5, 7, 4, 8, 3,
+                7, 2, 5, 2, 0, 6, 3, 1, 8, 6, 7, 1, 6, 1, 2, 9, 8, 5, 2, 3, 3, 4, 5, 4, 1, 0, 5, 0, 1, 2, 7, 6, 8, 8, 3,
+                1, 4, 0, 8, 1, 0, 0, 5, 9, 7, 8, 6, 5, 1, 6, 9, 9, 7, 0, 8, 4, 9, 3, 7, 3, 3, 2, 9, 2, 6, 1, 8 };
+        // Not Submitted due to this input
         int[] ans = findEvenNumbers(arr);
-        for (int i = 0; i < ans.length; i++) {
-            System.out.print(ans[i] + " ");
-        }
+        System.out.println(Arrays.toString(ans));
+        // for (int i = 0; i < ans.length; i++) {
+        // System.out.print(ans[i] + " ");
+        // }
     }
 }
 

@@ -1,17 +1,6 @@
 
 // 1446. Consecutive Characters : https://leetcode.com/problems/consecutive-characters/
 public class LeetCode_Consecutive_Characters {
-
-    // static int[] getNoZeroIntegers(int n) {
-    // for (int i = 1; i < n; i++) {
-    // for (int j = i; j < n; j++) {
-    // if (i + j == n) {
-    // return new int[] { i, j };
-    // }
-    // }
-    // }
-    // return new int[] {};
-    // }
     static int maxPower(String s) {
         int max = 1;
         int current = 0;
@@ -39,13 +28,6 @@ public class LeetCode_Consecutive_Characters {
         String str = "abbcccddddeeeeedcba";
         int ans = maxPower(str);
         System.out.println(ans);
-
-        // int num = 9669;
-        // int[] ans = getNoZeroIntegers(num);
-        // for (int i = 0; i < ans.length; i++) {
-        // System.out.print(ans[i] + " ");
-        // }
-        // System.out.print(num);
     }
 }
 
