@@ -6,9 +6,9 @@ public class LeetCode_Sum_of_Digits_of_String_After_Convert {
 
     static HashMap<Character, Integer> hashalot() {
         HashMap<Character, Integer> maps = new HashMap<>();
-
+        char c = ' ';
         for (int i = 0; i < 26; i++) {
-            char c = (char) ('a' + (i));
+            c = (char) ('a' + (i));
             maps.put(c, i + 1);
         }
         // maps.put('a', 1);
