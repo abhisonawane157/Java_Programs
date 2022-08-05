@@ -6,37 +6,43 @@ public class LeetCode_Sum_of_Digits_of_String_After_Convert {
 
     static HashMap<Character, Integer> hashalot() {
         HashMap<Character, Integer> maps = new HashMap<>();
-        maps.put('a', 1);
-        maps.put('b', 2);
-        maps.put('c', 3);
-        maps.put('d', 4);
-        maps.put('e', 5);
-        maps.put('f', 6);
-        maps.put('g', 7);
-        maps.put('h', 8);
-        maps.put('i', 9);
-        maps.put('j', 10);
-        maps.put('k', 11);
-        maps.put('l', 12);
-        maps.put('m', 13);
-        maps.put('n', 14);
-        maps.put('o', 15);
-        maps.put('p', 16);
-        maps.put('q', 17);
-        maps.put('r', 18);
-        maps.put('s', 19);
-        maps.put('t', 20);
-        maps.put('u', 21);
-        maps.put('v', 22);
-        maps.put('w', 23);
-        maps.put('x', 24);
-        maps.put('y', 25);
-        maps.put('z', 26);
+
+        for (int i = 0; i < 26; i++) {
+            char c = (char) ('a' + (i));
+            maps.put(c, i + 1);
+        }
+        // maps.put('a', 1);
+        // maps.put('b', 2);
+        // maps.put('c', 3);
+        // maps.put('d', 4);
+        // maps.put('e', 5);
+        // maps.put('f', 6);
+        // maps.put('g', 7);
+        // maps.put('h', 8);
+        // maps.put('i', 9);
+        // maps.put('j', 10);
+        // maps.put('k', 11);
+        // maps.put('l', 12);
+        // maps.put('m', 13);
+        // maps.put('n', 14);
+        // maps.put('o', 15);
+        // maps.put('p', 16);
+        // maps.put('q', 17);
+        // maps.put('r', 18);
+        // maps.put('s', 19);
+        // maps.put('t', 20);
+        // maps.put('u', 21);
+        // maps.put('v', 22);
+        // maps.put('w', 23);
+        // maps.put('x', 24);
+        // maps.put('y', 25);
+        // maps.put('z', 26);
         return maps;
     }
 
     static int getLucky(String s, int k) {
         HashMap<Character, Integer> maps = hashalot();
+        System.out.println(maps);
         String num = "";
         for (int i = 0; i < s.length(); i++) {
             if (maps.containsKey(s.charAt(i))) {
