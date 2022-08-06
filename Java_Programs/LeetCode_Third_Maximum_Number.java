@@ -1,42 +1,51 @@
 
 // 414. Third Maximum Number : https://leetcode.com/problems/third-maximum-number/
-import java.util.Arrays;
+import java.util.*;
 
 public class LeetCode_Third_Maximum_Number {
 
     static int thirdMax(int[] nums) {
-        Arrays.sort(nums);
-        int[] newarr = new int[nums.length];
-        newarr = nums;
-        for (int i = 0; i < nums.length; i++) {
-            if (i + 1 < nums.length) {
-                if (nums[i] == nums[i + 1]) {
-                    newarr[i] = Integer.MIN_VALUE;
+        nums = insertionsort(nums);
+        // System.out.println(Arrays.toString(nums));
+        List<Integer> list = new ArrayList<>();
+        for (int num : nums) {
+            if (!list.contains(num)) {
+                list.add(num);
+            }
+        }
+        if (list.size() >= 3) {
+            // System.out.println(list + " " + list.get(2));
+            return list.get(2);
+        } else {
+            return list.get(0);
+        }
+    }
+
+    static int[] insertionsort(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j > 0; j--) {
+                if (arr[j] > arr[j - 1]) {
+                    swap(arr, j, j - 1);
                 } else {
-                    newarr[i] = nums[i];
+                    break;
                 }
             }
         }
-        Arrays.sort(newarr);
-        // for (int i = 0; i < newarr.length; i++) {
-        // System.out.print(newarr[i] + " ");
-        // }
-        // System.out.println();
-        if (newarr.length >= 3) {
-            if (newarr[newarr.length - 3] == Integer.MIN_VALUE) {
-                return newarr[newarr.length - 1];
-            } else {
-                return newarr[newarr.length - 3];
-            }
-        } else {
-            return newarr[newarr.length - 1];
-        }
-        // return 0;
+        return arr;
+    }
+
+    static int[] swap(int[] arr, int first, int second) {
+        int temp = arr[first];
+        arr[first] = arr[second];
+        arr[second] = temp;
+        return arr;
     }
 
     public static void main(String[] args) {
+        // int[] nums = { 2, 1, 3, 5, 6, 7, 8 };
+        // int[] nums = { 2, 1, 3 };
+        int[] nums = { 2, 1 };
         // int[] nums = { 2, 2, 3, 1 };
-        int[] nums = { 1, 2, -2147483648 };
         int ans = thirdMax(nums);
         System.out.println(ans);
     }
