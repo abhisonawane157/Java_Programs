@@ -4,55 +4,44 @@ public class LeetCode_Find_Winner_on_a_Tic_Tac_Toe_Game {
     public static String[][] mat = new String[3][3];
 
     static String tictactoe(int[][] moves) {
-        if (moves.length <= 2) {
-            return "Pending";
-        }
-        int ii = 0;
+        int[][] board = new int[3][3];
         for (int i = 0; i < moves.length; i++) {
-            if (ii % 2 == 0)
-                // mat[moves[i][0]][moves[i][1]] = "A";
-                tictac(moves[i], "A");
-            else
-                tictac(moves[i], "B");
-            // mat[moves[i][0]][moves[i][1]] = "B";
-            ii++;
-        }
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = 0; j < mat[0].length; j++) {
-                System.out.print(mat[i][j] + " ");
+            int[] move = moves[i];
+            if (check(board, move, i % 2)) {
+                return i % 2 == 0 ? "A" : "B";
             }
-            System.out.println();
         }
-        if (moves.length == 9)
-            return check(mat, "Draw");
-        else
-            return check(mat, "Pending");
+        return isFull(board) ? "Draw" : "Pending";
     }
 
-    static String check(String[][] grid, String message) {
-        if (grid[0][0] == grid[0][1] && grid[0][1] == grid[0][2] && grid[0][2] != null)
-            return grid[0][2];
-        else if (grid[1][0] == grid[1][1] && grid[1][1] == grid[1][2] && grid[1][2] != null)
-            return grid[1][2];
-        else if (grid[2][0] == grid[2][1] && grid[2][1] == grid[2][2] && grid[2][2] != null)
-            return grid[2][2];
-        else if (grid[0][0] == grid[1][0] && grid[1][0] == grid[2][0] && grid[2][0] != null)
-            return grid[2][0];
-        else if (grid[0][1] == grid[1][1] && grid[1][1] == grid[2][1] && grid[2][1] != null)
-            return grid[2][1];
-        else if (grid[0][2] == grid[1][2] && grid[1][2] == grid[2][2] && grid[2][2] != null)
-            return grid[2][2];
-        else if (grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2] && grid[2][2] != null)
-            return grid[2][2];
-        else if (grid[0][2] == grid[1][1] && grid[1][1] == grid[2][0] && grid[2][0] != null)
-            return grid[2][0];
-        else
-            return message;
+    static boolean isFull(int[][] board) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
-    static void tictac(int[] ij, String val) {
-        mat[ij[0]][ij[1]] = val;
-        // System.out.println(ij[0]+"-"+ij[1]);
+    static boolean check(int[][] board, int[] move, int player) {
+        board[move[0]][move[1]] = player + 1;
+        for (int i = 0; i < 3; i++) {
+            if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][1] == player + 1) {
+                return true;
+            }
+            if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[1][i] == player + 1) {
+                return true;
+            }
+        }
+        if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] == player + 1) {
+            return true;
+        }
+        if (board[2][0] == board[1][1] && board[1][1] == board[0][2] && board[0][2] == player + 1) {
+            return true;
+        }
+        return false;
     }
 
     public static void main(String[] args) {
