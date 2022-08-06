@@ -1,6 +1,6 @@
 
 // 74. Search a 2D Matrix : https://leetcode.com/problems/search-a-2d-matrix/
-public class Leetcode {
+public class Leetcode_Search_a_2D_Matrix_Search_a_2D_Matrix {
     static boolean searchMatrix(int[][] matrix, int target) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = matrix[0].length - 1; j >= 0; j--) {
