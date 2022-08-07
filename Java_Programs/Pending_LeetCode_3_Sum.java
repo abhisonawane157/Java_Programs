@@ -1,40 +1,34 @@
-// import java.util.*;
+
+// 15. 3Sum : https://leetcode.com/problems/3sum/
+import java.util.*;
 
 class Pending_LeetCode_3_Sum {
-    static void triplet(int[] arr) {
-        // int[][] arr2 = new int[arr.length][arr.length];
-        String[] arrstr = new String[arr.length];
-        int count = 0;
+    static List<List<Integer>> threeSum(int[] arr) {
+        List<List<Integer>> list = new ArrayList<>();
+        List<Integer> arrlist = new ArrayList<>();
         for (int i = 0; i < arr.length; i++) {
             for (int j = i + 1; j < arr.length - 1; j++) {
                 for (int k = j + 1; k < arr.length; k++) {
                     if (arr[i] + arr[j] + arr[k] == 0) {
-                        arrstr[count] = "" + arr[i] + arr[j] + arr[k];
-                        System.out.println(arr[i] + " || " + arr[j] + " || " + arr[k]);
-                        count++;
+                        arrlist = new ArrayList<>();
+                        // System.out.println(arr[i] + " || " + arr[j] + " || " + arr[k]);
+                        arrlist.add(arr[i]);
+                        arrlist.add(arr[j]);
+                        arrlist.add(arr[k]);
+                        Collections.sort(arrlist);
+                        if (!list.contains(arrlist))
+                            list.add(arrlist);
                     }
                 }
             }
         }
-        print(arrstr);
-        // for (int i = 0; i < arrstr.length; i++) {
-        // for (int j = 0; j < 3; j++) {
-        // if (arrstr[i] == null) {
-        // } else {
-        // System.out.print(String.valueOf(arrstr[i].charAt(j)) + ",");
-        // }
-        // }
-        // System.out.print(",");
-        // }
-    }
-
-    static void print(String[] arr) {
-
+        return list;
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[] { -1, 0, 1, 2, -1, -4, 5, -7 };
-        triplet(arr);
+        int[] arr = new int[] { -1, 0, 1, 2, -1, -4 };
+        List<List<Integer>> list = threeSum(arr);
+        System.out.println(list.toString());
     }
 }
 // Input: nums = [-1,0,1,2,-1,-4]
@@ -46,3 +40,16 @@ class Pending_LeetCode_3_Sum {
 // The distinct triplets are [-1,0,1] and [-1,-1,2].
 // Notice that the order of the output and the order of the triplets does not
 // matter.
+
+// Input: nums = [0,1,1]
+// Output: []
+// Explanation: The only possible triplet does not sum up to 0.
+
+// Input: nums = [0,0,0]
+// Output: [[0,0,0]]
+// Explanation: The only possible triplet sums up to 0.
+
+// Explanation : Given an integer array nums, return all the triplets [nums[i],
+// nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j]
+// + nums[k] == 0.
+// Notice that the solution set must not contain duplicate triplets.
