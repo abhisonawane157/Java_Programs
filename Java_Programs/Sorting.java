@@ -105,6 +105,34 @@ public class Sorting {
         }
     }
 
+    static void quicksort(int[] arr, int start, int end) {
+        if (start >= end)
+            return;
+
+        int s = start;
+        int e = end;
+        int mid = s + (e - s) / 2;
+        int pivot = arr[mid];
+
+        while (s <= e) {
+            while (arr[s] < pivot) {
+                s++;
+            }
+            while (arr[e] > pivot) {
+                e--;
+            }
+            if (s <= e) {
+                int temp = arr[s];
+                arr[s] = arr[e];
+                arr[e] = temp;
+                s++;
+                e--;
+            }
+        }
+        quicksort(arr, start, e);
+        quicksort(arr, s, end);
+    }
+
     public static void main(String[] args) {
         int[] arr = { 5, 4, 3, 2, 1 };
         int[] ans = bubblesort(arr);
@@ -121,5 +149,8 @@ public class Sorting {
         int[] arr4 = { 5, 4, 3, 21, 1 };
         mergesort(arr4, 0, arr4.length);
         System.out.println("Merge Sort: " + Arrays.toString(arr4));
+        int[] arr5 = { 50, 23, 1, 3, 201, 11 };
+        quicksort(arr5, 0, arr5.length - 1);
+        System.out.println("Quick Sort: " + Arrays.toString(arr5));
     }
 }
