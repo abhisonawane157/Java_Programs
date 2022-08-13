@@ -5,27 +5,24 @@ import java.util.*;
 public class LeetCode_N_Queens {
 
     static List<List<String>> solveNQueens(int n) {
-        List<List<String>> ans = new ArrayList<>();
         boolean[][] a = new boolean[n][n];
-        System.out.println(queens(a, 0));
-        return ans;
+        return queens(a, 0);
     }
 
-    static int queens(boolean[][] board, int row) {
+    static List<List<String>> queens(boolean[][] board, int row) {
         if (row == board.length) {
-            display(board);
-            System.out.println();
-            return 1;
+
+            return display(board);
         }
-        int count = 0;
+        List<List<String>> ans = new ArrayList<>();
         for (int col = 0; col < board.length; col++) {
             if (isSafe(board, row, col)) {
                 board[row][col] = true;
-                count += queens(board, row + 1);
+                ans.addAll(queens(board, row + 1));
                 board[row][col] = false;
             }
         }
-        return count;
+        return ans;
     }
 
     static boolean isSafe(boolean[][] board, int row, int col) {
@@ -51,23 +48,44 @@ public class LeetCode_N_Queens {
         return true;
     }
 
-    static void display(boolean[][] board) {
+    static List<List<String>> display(boolean[][] board) {
+        List<List<String>> ans = new ArrayList<>();
+        List<String> abcc = new ArrayList<>();
         for (boolean[] row : board) {
+            String abc = "";
             for (boolean element : row) {
-                if (element)
-                    System.out.print("Q ");
-                else
-                    System.out.print("X ");
+                if (element) {
+                    abc = abc + "Q";
+                } else {
+                    abc = abc + ".";
+                }
             }
-            System.out.println();
+            abcc.add(abc);
         }
+        ans.add(abcc);
+        return ans;
     }
 
     public static void main(String[] args) {
         int n = 4;
-        // List<List<String>> ans = solveNQueens(n);
-
+        List<List<String>> ans = solveNQueens(n);
+        System.out.println(ans);
     }
 }
 
 // Output
+// Input: n = 4
+// Output: [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
+// Explanation: There exist two distinct solutions to the 4-queens puzzle as
+// shown above
+
+// Input: n = 1
+// Output: [["Q"]]
+
+// Explanation : The n-queens puzzle is the problem of placing n queens on an n
+// x n chessboard such that no two queens attack each other.
+// Given an integer n, return all distinct solutions to the n-queens puzzle. You
+// may return the answer in any order.
+// Each solution contains a distinct board configuration of the n-queens'
+// placement, where 'Q' and '.' both indicate a queen and an empty space,
+// respectively.
