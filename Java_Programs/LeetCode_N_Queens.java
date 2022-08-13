@@ -65,7 +65,7 @@ public class LeetCode_N_Queens {
 
     public static void main(String[] args) {
         int n = 4;
-        List<List<String>> ans = solveNQueens(n);
+        // List<List<String>> ans = solveNQueens(n);
 
     }
 }
