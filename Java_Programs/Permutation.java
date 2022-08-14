@@ -46,10 +46,13 @@ public class Permutation {
         System.out.print("Permutation (Recursive): ");
         permutation("", "abc");
         System.out.println();
+        System.out.println();
         System.out.print("Permutation (Recursive): ");
         ArrayList<String> ans = permutationRet("", "abc");
         System.out.print(ans);
         System.out.println();
+        System.out.println();
+        System.out.print("Subsequence: ");
         subseq("", "ahbgdc");
     }
 }
