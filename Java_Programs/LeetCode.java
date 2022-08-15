@@ -1,3 +1,4 @@
+
 import java.util.*;
 
 public class LeetCode {
@@ -18,10 +19,11 @@ public class LeetCode {
     }
 
     public static void main(String[] args) {
-        // String s = "3[a]2[bc]";
-        String s = "2[abc]3[cd]ef";
+        String s = "3[a]2[bc]";
+        // String s = "2[abc]3[cd]ef";
         // String s = "3[a2[c]]";
         String ans = decodeString(s);
+
         System.out.println(ans);
     }
 }
