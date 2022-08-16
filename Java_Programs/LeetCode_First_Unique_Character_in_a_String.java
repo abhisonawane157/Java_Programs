@@ -4,17 +4,17 @@ import java.util.*;
 
 public class LeetCode_First_Unique_Character_in_a_String {
     static int firstUniqChar(String s) {
-        HashMap<String, Integer> maps = new HashMap<String, Integer>();
+        HashMap<Character, Integer> maps = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
-            if (maps.containsKey(String.valueOf(s.charAt(i)))) {
-                maps.put(String.valueOf(s.charAt(i)),
-                        1 + maps.get(String.valueOf(s.charAt(i))));
+            if (maps.containsKey((s.charAt(i)))) {
+                maps.put((s.charAt(i)),
+                        1 + maps.get((s.charAt(i))));
             } else {
-                maps.put(String.valueOf(s.charAt(i)), 1);
+                maps.put(s.charAt(i), 1);
             }
         }
         for (int i = 0; i < s.length(); i++) {
-            if (maps.get(String.valueOf(s.charAt(i))) == 1) {
+            if (maps.get((s.charAt(i))) == 1) {
                 return i;
             }
         }
@@ -22,9 +22,9 @@ public class LeetCode_First_Unique_Character_in_a_String {
     }
 
     public static void main(String[] args) {
-        // String num = "leetcode";
+        String num = "leetcode";
         // String num = "loveleetcode";
-        String num = "aabb";
+        // String num = "aabb";
         int ans = firstUniqChar(num);
         System.out.println(ans);
     }
