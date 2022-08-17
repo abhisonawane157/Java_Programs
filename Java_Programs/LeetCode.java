@@ -19,6 +19,7 @@ public class LeetCode {
     }
 
     static int month(int num) {
+
         HashMap<Integer, Integer> maps = new HashMap<>();
         maps.put(1, 1);
         maps.put(2, 4);
@@ -50,8 +51,9 @@ public class LeetCode {
     public static void main(String[] args) {
         int day = 28;
         int month = 2;
-        int year = 2100;
+        int year = 21555500;
         String ans = dayOfTheWeek(day, month, year);
         System.out.println(ans);
+
     }
 }
