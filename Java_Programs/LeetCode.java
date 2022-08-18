@@ -53,6 +53,7 @@ public class LeetCode {
         int month = 2;
         int year = 21555500;
         String ans = dayOfTheWeek(day, month, year);
+
         System.out.println(ans);
 
     }
