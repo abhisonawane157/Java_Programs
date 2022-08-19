@@ -1,29 +1,71 @@
 
-// 2235. Add Two Integers : https://leetcode.com/problems/add-two-integers/
+// 2239. Find Closest Number to Zero : https://leetcode.com/problems/find-closest-number-to-zero/
+import java.util.*;
 
 public class LeetCode_Find_Closest_Number_to_Zero {
+    static int findClosestNumber(int[] nums) {
+        if (nums.length <= 1) {
+            return nums[0];
+        }
+        int a = minPositive(nums);
+        int b = minNegative(nums);
+        System.out.println(a + " " + b);
+        if (Math.abs(a) == Math.abs(b)) {
+            return a;
+        } else {
+            if (Math.abs(a) < Math.abs(b))
+                return a;
+            else
+                return b;
+        }
+    }
 
-    static int sum(int num1, int num2) {
-        return Integer.sum(num1, num2);
+    static int minPositive(int[] nums) {
+        Arrays.sort(nums);
+        int min = nums[nums.length - 1];
+        for (int num : nums) {
+            if (num >= 0) {
+                min = Math.min(min, num);
+            }
+        }
+        return min;
+    }
+
+    static int minNegative(int[] nums) {
+        Arrays.sort(nums);
+        int min = nums[0];
+        for (int num : nums) {
+            if (num < 0) {
+                min = Math.max(min, num);
+            }
+        }
+        return min;
     }
 
     public static void main(String[] args) {
-        int num1 = 6;
-        int num2 = 6;
-        int ans = sum(num1, num2);
+        // int[] nums = { 2, -1, 1 };
+        // int[] nums = { -100000, -100000 };
+        int[] nums = { -4, -2, 1, 4, 8 };
+        int ans = findClosestNumber(nums);
         System.out.println(ans);
     }
 }
 
 // Output
-// Input: num1 = 12, num2 = 5
-// Output: 17
-// Explanation: num1 is 12, num2 is 5, and their sum is 12 + 5 = 17, so 17 is
-// returned.
+// Input: nums = [-4,-2,1,4,8]
+// Output: 1
+// Explanation:
+// The distance from -4 to 0 is |-4| = 4.
+// The distance from -2 to 0 is |-2| = 2.
+// The distance from 1 to 0 is |1| = 1.
+// The distance from 4 to 0 is |4| = 4.
+// The distance from 8 to 0 is |8| = 8.
+// Thus, the closest number to 0 in the array is 1.
 
-// Input: num1 = -10, num2 = 4
-// Output: -6
-// Explanation: num1 + num2 = -6, so -6 is returned.
-
-// Explanation: Given two integers num1 and num2, return the sum of the two
-// integers.
+// Input: nums = [2,-1,1]
+// Output: 1
+// Explanation: 1 and -1 are both the closest numbers to 0, so 1 being larger is
+// returned
+// Explanation : Given an integer array nums of size n, return the number with
+// the value closest to 0 in nums. If there are multiple answers, return the
+// number with the largest value.
