@@ -7,7 +7,7 @@ public class LeetCode_Decode {
         while (i <= (k - 1) && i <= s.length() - 1) {
             if (Character.isDigit(s.charAt(i))) {
                 n = n.repeat(Integer.parseInt(String.valueOf(s.charAt(i))));
-                // System.out.println(i + "i" + n);
+                System.out.println(i + "i" + n);
                 // s = n;
                 // i = 0;
             } else {
@@ -20,10 +20,11 @@ public class LeetCode_Decode {
     }
 
     public static void main(String[] args) {
-        String s = "leet2code3";
+        // String s = "leet2code3";
         // String s = "a2345678999999999999999";
         // String s = "ha22";
-        int k = 1;
+        String s = "yyuele72uthzyoeut7oyku2yqmghy5luy9qguc28ukav7an6a2bvizhph35t86qicv4gyeo6av7gerovv5lnw47954bsv2xruaej";
+        int k = 123365626;
         String ans = decodeAtIndex(s, k);
         System.out.println(ans);
     }
