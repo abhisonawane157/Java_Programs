@@ -29,6 +29,5 @@ public class LeetCode_Decode {
         // int k = 123365626;
         // String ans = decodeAtIndex(s, k);
         // System.out.println(ans);
-
     }
 }
