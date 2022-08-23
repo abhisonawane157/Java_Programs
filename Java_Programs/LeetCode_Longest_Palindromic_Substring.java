@@ -1,4 +1,5 @@
 
+//Wrong Code
 public class LeetCode_Longest_Palindromic_Substring {
     static String longestPalindrome(String s) {
         StringBuilder stk = new StringBuilder(s);
@@ -26,8 +27,8 @@ public class LeetCode_Longest_Palindromic_Substring {
     }
 
     public static void main(String[] args) {
-        // String s = "abacdfgdcaba";
-        String s = "abac";
+        String s = "abacdfgdcaba";
+        // String s = "abac";
         String ans = longestPalindrome(s);
 
         System.out.println(ans);
