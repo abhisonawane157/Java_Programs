@@ -1,6 +1,6 @@
 
 public class LeetCode_Linked {
-    public static ListNode head;
+    public ListNode head;
     public ListNode tail;
     public int size;
 
@@ -58,7 +58,7 @@ public class LeetCode_Linked {
         // return head;
     }
 
-    public static void display() {
+    public void display() {
         ListNode temp = head;
         while (temp != null) {
             System.out.print(temp.val + " -> ");
@@ -67,19 +67,38 @@ public class LeetCode_Linked {
         System.out.println("END");
     }
 
+    static void addTwoNumbers(ListNode l1, ListNode l2) {
+        StringBuilder a = new StringBuilder();
+        StringBuilder b = new StringBuilder();
+        while (l1.next != null) {
+            a.append(l1.val);
+        }
+        while (l2.next != null) {
+            b.append(l2.val);
+        }
+        System.out.println(a.toString());
+        System.out.println(b.toString());
+        String ans = String
+                .valueOf(Integer.parseInt(a.reverse().toString()) + Integer.parseInt(b.reverse().toString()));
+        System.out.println(ans);
+    }
+
     public static void main(String[] args) {
         LeetCode_Linked l1 = new LeetCode_Linked();
-        ListNode a = new ListNode(1);
+        LeetCode_Linked l2 = new LeetCode_Linked();
+        // ListNode a = new ListNode(1);
+        // ListNode b = new ListNode(2);
         l1.insertLast(1);
         l1.insertLast(1);
         l1.insertLast(2);
-        l1.insertLast(2);
-        l1.insertLast(2);
-        l1.insertLast(3);
-        display();
-        deleteDuplicates(a);
+        l2.insertLast(2);
+        l2.insertLast(2);
+        l2.insertLast(3);
+        // display();
+        // deleteDuplicates(a);
         // ListNode ans = l1.deleteDuplicates(a);
-        display();
+        // display();
         // System.out.println(ans);
+        addTwoNumbers(l1.head, l2.head);
     }
 }
