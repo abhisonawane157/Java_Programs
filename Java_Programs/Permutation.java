@@ -44,7 +44,7 @@ public class Permutation {
 
     public static void main(String[] args) {
         System.out.print("Permutation (Recursive): ");
-        permutation("", "123");
+        permutation("", "1312");
         System.out.println();
         System.out.println();
         System.out.print("Permutation (Recursive): ");
