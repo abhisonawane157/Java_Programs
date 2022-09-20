@@ -7,13 +7,17 @@ public class LeetCode_Count_Common_Words_With_One_Occurrence {
     static int countWords(String[] words1, String[] words2) {
         HashMap<String, Integer> maps = new HashMap<>();
         HashMap<String, Integer> maps1 = new HashMap<>();
+        int count1 = 0;
         for (String element : words1) {
             if (maps.containsKey(element)) {
                 maps.put(element, maps.get(element) + 1);
+                count1++;
             } else {
                 maps.put(element, 1);
             }
         }
+        count1 = words1.length - count1;
+        System.out.println(count1);
         for (String element : words2) {
             if (maps1.containsKey(element)) {
                 maps1.put(element, maps1.get(element) + 1);
@@ -32,38 +36,62 @@ public class LeetCode_Count_Common_Words_With_One_Occurrence {
     }
 
     public static void main(String[] args) {
-        // String[] words1 = { "a", "ab" };
-        // String[] words2 = { "a", "a", "a", "ab" };
+        String[] words1 = { "a", "ab" };
+        String[] words2 = { "a", "a", "a", "ab" };
         // String[] words1 = { "b", "bb", "bbb" };
         // String[] words2 = { "a", "aa", "aaa" };
         // String[] words1 = { "leetcode", "is", "amazing", "as", "is" };
         // String[] words2 = { "amazing", "leetcode", "is" };
-        String[] words1 = { "bjxzvssdoq", "oom", "lxrrvf", "aoeselhvrnw", "awnornqyztqlza", "bjxqkapuvaw",
-                "wibxruerngdzgjd", "rezrwdzvllpbjpnikhzraz", "pswmnrsepudx", "nlicjldpeia", "glg", "nllxfcjjitmsuugmr",
-                "cl", "pysmpgjakkjnusfopphb", "zxlwcdjpn", "xktsfnchwrdesnf", "qptnoxxgrjmvr",
-                "exlfwjfsbsirbbkyqjtinrrwuhh", "rqbnghajxygilgdjejopyuwyjqrx", "vrjkqsicuqoalqyaxkaaogxbf",
-                "ixnlltqbpygmpjuspom", "izajsxotcbhzdnkujwgdzo", "b", "lighabre", "i", "ljqqbfddipvcooh",
-                "hboedpepeeunx", "bkhzhiefammwqkhvampokd", "ptlozguwmyyp", "loeshsjgazzwvs", "kyrltbdzlymjxtvwiiq",
-                "fk", "mbjpgwsahkgkehlcoqbhunqchxj", "nfyuvlrmiturheb", "cyqwsiysmoirurj", "sciqruywy", "podsrhmsozan",
-                "nlyadkrxhdbup", "gdugldwghzt", "wpjm", "gjobdekmjisjgadkwwemnmco", "dkjdtimdghvlhuetxyaklk",
-                "iwqylhdwqbwaqdouowoodhs", "mn" };
-        String[] words2 = { "eeormvovhzslwsqgzthlgntgzc", "zfwownznh", "suxrkdbjdjjtbkjucsbyk", "u", "y",
-                "lbjooktoctgwbbptiffytquha", "dcsxrghgpultkatbecjadbespvww", "vwduylshcpaiu", "rtcxwctvquaiuwkgvdx",
-                "a", "szearxmdqcismljmihbtkcirztdnrc", "htgmuxtxdunsvfizb", "hybe", "nsegkgwcvopncmfpaahhhjeuqjosv",
-                "jtarnnpppxtzmopixeijqqahkd", "hazcgrrnpourkyoeanodejiptne", "kurhokvhixihe", "ljwycewmecfqdhtxiokjn",
-                "qgjzzvpyvwetlsvcsw", "aunns", "nwcnfrzzvxafkfjfnczummtubikji", "nipiygnvlfntgpxfedj", "mgnt",
-                "xvjehufvaqouhztnmts", "sjtbrfjwtqxakqktxjaljrbwfoxvz", "dfeujeikfrtrpiafrgxvjlkpxtog", "u",
-                "ggbcxoasodaqaazulrxjleecexey", "inedrgssajhpygfvozigohis", "pevxwgfzxebybfe", "cgy", "fnhvlx",
-                "vxfybaebkoq", "xvhx", "mxbqjtanctljewwjjlbpkgbtsm", "mlwagamcikbcpuexhikmizp",
-                "qeiomipvsoqlsnhylulirrcwtqga", "bwemqcgyusuauwlpbjjru", "iimcbidtndh", "lpjejlkmxtlbyvnscy",
-                "dlspriicnyykdsyvswlgktavwloq", "dib", "qoptbduulgqwquvhdvmwdz", "xrtxghrbfrhpzduxeljnctgg",
-                "schmbsaupayqnpchn", "kah", "itotymryqufqpozrwmvsl", "gurb", "xsyocxcmwvqmnmxthfemmu", "pkfdutm",
-                "hkbwxwjxyuld", "ukdqszfjckdunnhpevw", "kqfwytdvnvjrchiwprcqkfntqticsc", "zjmsfwjddgjiypsmagdrujb",
-                "gn", "ebncbjvhpbjecbrizdpv", "nbfehcktwswih", "sttmqcdmobdgtgkyxydyovahknjbsn", "sryyufrtocf",
-                "eiicpwknxrzqylqpybhfd", "pey", "njimttradeoa", "wcogjdfr", "prva", "tyxdmxgw", "wluzocppg", "kzm",
-                "wbyyperlkflaoxyxftzwxvmemof", "snzpclbulddnmmjmpdurcybo", "mowxgpmzojtmympmt", "uvtnojjahrovzmlukf",
-                "sykhtgejlmbzshhneoyqr", "ib", "haqkkizidifykwijm", "csjtexnr", "yvgr", "vzcxbtlthrynnawxnkxdptp",
-                "yvxrmscsckv" };
+        // String[] words1 = { "bjxzvssdoq", "oom", "lxrrvf", "aoeselhvrnw",
+        // "awnornqyztqlza", "bjxqkapuvaw",
+        // "wibxruerngdzgjd", "rezrwdzvllpbjpnikhzraz", "pswmnrsepudx", "nlicjldpeia",
+        // "glg", "nllxfcjjitmsuugmr",
+        // "cl", "pysmpgjakkjnusfopphb", "zxlwcdjpn", "xktsfnchwrdesnf",
+        // "qptnoxxgrjmvr",
+        // "exlfwjfsbsirbbkyqjtinrrwuhh", "rqbnghajxygilgdjejopyuwyjqrx",
+        // "vrjkqsicuqoalqyaxkaaogxbf",
+        // "ixnlltqbpygmpjuspom", "izajsxotcbhzdnkujwgdzo", "b", "lighabre", "i",
+        // "ljqqbfddipvcooh",
+        // "hboedpepeeunx", "bkhzhiefammwqkhvampokd", "ptlozguwmyyp", "loeshsjgazzwvs",
+        // "kyrltbdzlymjxtvwiiq",
+        // "fk", "mbjpgwsahkgkehlcoqbhunqchxj", "nfyuvlrmiturheb", "cyqwsiysmoirurj",
+        // "sciqruywy", "podsrhmsozan",
+        // "nlyadkrxhdbup", "gdugldwghzt", "wpjm", "gjobdekmjisjgadkwwemnmco",
+        // "dkjdtimdghvlhuetxyaklk",
+        // "iwqylhdwqbwaqdouowoodhs", "mn" };
+        // String[] words2 = { "eeormvovhzslwsqgzthlgntgzc", "zfwownznh",
+        // "suxrkdbjdjjtbkjucsbyk", "u", "y",
+        // "lbjooktoctgwbbptiffytquha", "dcsxrghgpultkatbecjadbespvww", "vwduylshcpaiu",
+        // "rtcxwctvquaiuwkgvdx",
+        // "a", "szearxmdqcismljmihbtkcirztdnrc", "htgmuxtxdunsvfizb", "hybe",
+        // "nsegkgwcvopncmfpaahhhjeuqjosv",
+        // "jtarnnpppxtzmopixeijqqahkd", "hazcgrrnpourkyoeanodejiptne", "kurhokvhixihe",
+        // "ljwycewmecfqdhtxiokjn",
+        // "qgjzzvpyvwetlsvcsw", "aunns", "nwcnfrzzvxafkfjfnczummtubikji",
+        // "nipiygnvlfntgpxfedj", "mgnt",
+        // "xvjehufvaqouhztnmts", "sjtbrfjwtqxakqktxjaljrbwfoxvz",
+        // "dfeujeikfrtrpiafrgxvjlkpxtog", "u",
+        // "ggbcxoasodaqaazulrxjleecexey", "inedrgssajhpygfvozigohis",
+        // "pevxwgfzxebybfe", "cgy", "fnhvlx",
+        // "vxfybaebkoq", "xvhx", "mxbqjtanctljewwjjlbpkgbtsm",
+        // "mlwagamcikbcpuexhikmizp",
+        // "qeiomipvsoqlsnhylulirrcwtqga", "bwemqcgyusuauwlpbjjru", "iimcbidtndh",
+        // "lpjejlkmxtlbyvnscy",
+        // "dlspriicnyykdsyvswlgktavwloq", "dib", "qoptbduulgqwquvhdvmwdz",
+        // "xrtxghrbfrhpzduxeljnctgg",
+        // "schmbsaupayqnpchn", "kah", "itotymryqufqpozrwmvsl", "gurb",
+        // "xsyocxcmwvqmnmxthfemmu", "pkfdutm",
+        // "hkbwxwjxyuld", "ukdqszfjckdunnhpevw", "kqfwytdvnvjrchiwprcqkfntqticsc",
+        // "zjmsfwjddgjiypsmagdrujb",
+        // "gn", "ebncbjvhpbjecbrizdpv", "nbfehcktwswih",
+        // "sttmqcdmobdgtgkyxydyovahknjbsn", "sryyufrtocf",
+        // "eiicpwknxrzqylqpybhfd", "pey", "njimttradeoa", "wcogjdfr", "prva",
+        // "tyxdmxgw", "wluzocppg", "kzm",
+        // "wbyyperlkflaoxyxftzwxvmemof", "snzpclbulddnmmjmpdurcybo",
+        // "mowxgpmzojtmympmt", "uvtnojjahrovzmlukf",
+        // "sykhtgejlmbzshhneoyqr", "ib", "haqkkizidifykwijm", "csjtexnr", "yvgr",
+        // "vzcxbtlthrynnawxnkxdptp",
+        // "yvxrmscsckv" };
         int ans = countWords(words1, words2);
         System.out.println(ans);
     }
