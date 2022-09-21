@@ -4,7 +4,7 @@ import java.util.*;
 public class SubSequence {
     static void subseq(String p, String up) {
         if (up.isEmpty()) {
-            System.out.println(p);
+            System.out.print(p + ", ");
             return;
         }
         char ch = up.charAt(0);
@@ -28,6 +28,7 @@ public class SubSequence {
 
     public static void main(String[] args) {
         subseq("", "1312");
+        System.out.println();
         ArrayList<String> ans = subseqRet("", "4451");
         System.out.println(ans);
     }

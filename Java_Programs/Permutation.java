@@ -48,7 +48,7 @@ public class Permutation {
         System.out.println();
         System.out.println();
         System.out.print("Permutation (Recursive): ");
-        ArrayList<String> ans = permutationRet("", "abc");
+        ArrayList<String> ans = permutationRet("", "6103");
         System.out.print(ans);
         System.out.println();
         System.out.println();
