@@ -35,8 +35,8 @@ public class LeetCode_Reverse_Words_in_a_String_III {
     }
 
     public static void main(String[] args) {
-        String s = "Let's take LeetCode contest";
-        // String s = "God Ding";
+        // String s = "Let's take LeetCode contest";
+        String s = "God Ding";
         String ans = reverseWords(s);
         System.out.println(ans);
     }
