@@ -17,7 +17,7 @@ class GFG_Number_of_Distinct_Islands {
         return set.size();
     }
 
-    String dfs(int i, int j, int[][] grid, String s) {
+    static String dfs(int i, int j, int[][] grid, String s) {
         if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == 0)
             return "0";
         grid[i][j] = 0;
