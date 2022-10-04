@@ -56,3 +56,4 @@ class Matrix_Transpose_Same_Size {
 // Transposed matrix:
 // 1 6 7
 // 2 4 8
+// 5 9 9
