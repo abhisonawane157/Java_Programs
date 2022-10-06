@@ -16,7 +16,7 @@ public class LeetCode_Number_of_Islands {
         return set.size();
     }
 
-    String dfs(int i, int j, char[][] grid, String s) {
+    static String dfs(int i, int j, char[][] grid, String s) {
         if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == '0')
             return "0";
         grid[i][j] = '0';
