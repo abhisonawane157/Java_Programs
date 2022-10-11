@@ -56,7 +56,7 @@ public class GFG_Number_of_Islands {
         // { 3, 3 },
         // { 3, 4 }
         // };
-        int k = operators.length;
+        // int k = operators.length;
         List<Integer> ans = numOfIslands(row, cols, operators);
         System.out.println(ans);
     }

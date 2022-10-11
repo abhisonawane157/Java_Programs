@@ -47,7 +47,7 @@ public class LeetCode_Linked {
         if (node == null)
             return;
         // return node;
-        ListNode head = node;
+        // ListNode head = node;
         while (node.next != null) {
             if (node.val == node.next.val) {
                 node.next = node.next.next;
