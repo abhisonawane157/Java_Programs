@@ -16,7 +16,6 @@ class GFG_Save_Your_Life {
             } else {
                 int k = (int) ch;
                 arr[i] = k;
-
             }
         }
         int ans = 0;
