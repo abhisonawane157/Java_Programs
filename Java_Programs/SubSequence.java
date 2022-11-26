@@ -27,7 +27,7 @@ public class SubSequence {
     }
 
     public static void main(String[] args) {
-        subseq("", "1312");
+        subseq("", "3124");
         System.out.println();
         ArrayList<String> ans = subseqRet("", "4451");
         System.out.println(ans);
