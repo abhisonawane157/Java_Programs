@@ -3,53 +3,85 @@
 import java.util.*;
 
 public class LeetCode_Sort_Characters_By_Frequency {
-    static int max(HashMap<Character, Integer> maps) {
-        int maxx = 0;
-        for (Character key : maps.keySet())
-            maxx = Math.max(maxx, maps.get(key));
-        return maxx;
+    // static int max(HashMap<Character, Integer> maps) {
+    // int maxx = 0;
+    // for (Character key : maps.keySet())
+    // maxx = Math.max(maxx, maps.get(key));
+    // return maxx;
+    // }
+
+    // static String frequencySort(String s) {
+    // HashMap<Character, Integer> maps = new HashMap<>();
+    // for (int i = 0; i < s.length(); i++) {
+    // if (maps.containsKey(s.charAt(i)))
+    // maps.put(s.charAt(i), 1 + maps.get(s.charAt(i)));
+    // else
+    // maps.put(s.charAt(i), 1);
+
+    // }
+    // int k = max(maps);
+    // String an = "";
+    // while (k >= 1) {
+    // ArrayList<Character> m = new ArrayList<>();
+    // for (Character key : maps.keySet()) {
+    // if (maps.containsValue(k)) {
+    // if (k == maps.get(key)) {
+    // m.add(key);
+    // }
+    // }
+    // }
+    // an = an + ma(m, k);
+    // m = new ArrayList<>();
+    // k--;
+    // }
+    // an = an.substring(0, an.length() - 1);
+    // String[] dum = an.split(",");
+    // String g = "";
+    // for (String element : dum) {
+    // g = g + "" + (element);
+    // }
+    // return g;
+    // }
+
+    // static String ma(ArrayList<Character> m, int k) {
+    // String temp = "";
+    // Collections.sort(m);
+    // for (Character element : m) {
+    // temp = temp + String.valueOf(element + ",").repeat(k);
+    // }
+    // return temp;
+    // }
+
+    public static String fill(int length, Character c) {
+        char[] data = new char[length];
+        Arrays.fill(data, c);
+        return new String(data);
+
     }
 
-    static String frequencySort(String s) {
-        HashMap<Character, Integer> maps = new HashMap<>();
+    public static String frequencySort(String s) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        int max = 0;
         for (int i = 0; i < s.length(); i++) {
-            if (maps.containsKey(s.charAt(i)))
-                maps.put(s.charAt(i), 1 + maps.get(s.charAt(i)));
-            else
-                maps.put(s.charAt(i), 1);
-
-        }
-        int k = max(maps);
-        String an = "";
-        while (k >= 1) {
-            ArrayList<Character> m = new ArrayList<>();
-            for (Character key : maps.keySet()) {
-                if (maps.containsValue(k)) {
-                    if (k == maps.get(key)) {
-                        m.add(key);
-                    }
-                }
+            int k = map.getOrDefault(s.charAt(i), 0);
+            map.put(s.charAt(i), k + 1);
+            if (max < map.get(s.charAt(i))) {
+                max = map.get(s.charAt(i));
             }
-            an = an + ma(m, k);
-            m = new ArrayList<>();
-            k--;
         }
-        an = an.substring(0, an.length() - 1);
-        String[] dum = an.split(",");
-        String g = "";
-        for (String element : dum) {
-            g = g + "" + (element);
+        SortedMap<Integer, String> map1 = new TreeMap<Integer, String>();
+        for (Map.Entry<Character, Integer> e : map.entrySet()) {
+            if (map1.containsKey(e.getValue())) {
+                map1.put(e.getValue(), map1.get(e.getValue()) + fill(e.getValue(), e.getKey()));
+            } else {
+                map1.put(e.getValue(), fill(e.getValue(), e.getKey()));
+            }
         }
-        return g;
-    }
-
-    static String ma(ArrayList<Character> m, int k) {
-        String temp = "";
-        Collections.sort(m);
-        for (Character element : m) {
-            temp = temp + String.valueOf(element + ",").repeat(k);
+        String str = "";
+        for (Map.Entry<Integer, String> y : map1.entrySet()) {
+            str = y.getValue() + str;
         }
-        return temp;
+        return str;
     }
 
     public static void main(String[] args) {
